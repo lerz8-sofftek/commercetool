@@ -1,3 +1,4 @@
+import 'zone.js'; // Ensure Zone.js is included
 import { bootstrapApplication } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
 import { importProvidersFrom } from '@angular/core';
@@ -9,5 +10,8 @@ bootstrapApplication(MyWidgetComponent, {
 }).then(appRef => {
   const injector = appRef.injector;
   const webComponent = createCustomElement(MyWidgetComponent, { injector });
-  customElements.define('my-angular-widget', webComponent);
-});
+
+  if (!customElements.get('my-angular-widget')) {
+    customElements.define('my-angular-widget', webComponent);
+  }
+}).catch(err => console.error('Angular Web Component Error:', err));
