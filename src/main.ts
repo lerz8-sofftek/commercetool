@@ -1,10 +1,13 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
 import { createCustomElement } from '@angular/elements';
+import { importProvidersFrom } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { MyWidgetComponent } from './app/my-widget/my-widget.component';
 
-
-bootstrapApplication(AppComponent, appConfig).then(appRef => {
-  const injector = appRef.injector; 
-  const webComponent = createCustomElement(AppComponent, { injector });
-  customElements.define('custom-angular-widget', webComponent);});
+bootstrapApplication(MyWidgetComponent, {
+  providers: [importProvidersFrom(BrowserModule)]
+}).then(appRef => {
+  const injector = appRef.injector;
+  const webComponent = createCustomElement(MyWidgetComponent, { injector });
+  customElements.define('my-angular-widget', webComponent);
+});
