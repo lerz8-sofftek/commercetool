@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-   "build": "ng build --configuration=production --output-hashing=none && cat dist/commercetool/browser/{polyfills,main}.js > dist/commercetool/browser/elements.js",
+   "build": "ng build --configuration=production --output-hashing=none && cat dist/commercetool/browser/{main,polyfills}.js > dist/commercetool/browser/elements.js",
 
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
