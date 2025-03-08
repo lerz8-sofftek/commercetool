@@ -1,18 +1,28 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common'; // ✅ Provides *ngIf, *ngFor, pipes, etc.
 
 @Component({
-  selector: 'my-angular-widget',
-  template: `<div>
-               <h2>Hola desde Angular Web Component</h2>
-               <button (click)="sendMessage()">Enviar Mensaje</button>
-             </div>`,
+  selector: 'app-simple-button',
+  standalone: true, // ✅ Standalone component (Angular 19)
+  imports: [CommonModule], // ✅ Enables common directives like *ngIf, *ngFor
+  template: `<button (click)="handleClick()">Click Me</button>`,
   styles: [`
-    div { border: 2px solid blue; padding: 10px; }
-    h2 { color: blue; }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
   `]
 })
-export class MyWidgetComponent {
-  sendMessage() {
-    alert('Mensaje desde Angular Web Component');
+export class SimpleButtonComponent {
+  handleClick() {
+    alert('Button Clicked!');
   }
 }
