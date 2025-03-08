@@ -8,7 +8,7 @@ enableProdMode(); // Ensure production mode is enabled
 bootstrapApplication(MyWidgetComponent, appConfig).then((applicationRef: ApplicationRef) => {
   const webComponent = createCustomElement(MyWidgetComponent, { injector: applicationRef.injector });
   if (!customElements.get('my-angular-widget')) {
-    customElements.define('my-angular-widget', webComponent);
+    customElements.define('custom-element-angular-widget', webComponent);
   }
     
 }).catch((err) => console.error('Angular Web Component Error:',err));
